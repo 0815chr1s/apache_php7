@@ -2,12 +2,11 @@ FROM debian:stretch
 
 LABEL maintainer="0815chr1s"
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get upgrade -y --force-yes && apt-get install -y --force-yes --no-install-recommends apt-utils
+RUN apt-get -y --force-yes install \
 		apache2 \
 		software-properties-common \
-		supervisor \
-	&& apt-get clean \
-	&& rm -fr /var/lib/apt/lists/*
+		supervisor 
 
 RUN a2enmod rewrite
 COPY conf/000-default.conf /etc/apache2/sites-available/000-default.conf
