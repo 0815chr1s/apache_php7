@@ -1,2 +1,2 @@
 echo "Starte Apache2"
-service apache2 start
+/etc/init.d/apache2 start
